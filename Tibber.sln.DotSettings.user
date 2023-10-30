@@ -11,5 +11,7 @@
     &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest.TestExecuteCommandsWithDuplicates&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest.TestExecuteCommandsWithNonZeroStartingPosition&lt;/TestId&gt;
     &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Db.PostgresHandlerTest.TestGetExecutionReport&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Db.PostgresHandlerTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
