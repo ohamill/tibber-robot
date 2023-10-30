@@ -1,0 +1,15 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1eeef702_002D4b31_002D4068_002D861f_002D9e95f985296a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PostgresServiceTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Services.PostgresServiceTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.TimerTest.TestMeasureDuration&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.TimerTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Controllers.RobotControllerTest.TestPostPath&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Controllers.RobotControllerTest.TestPostPathWithDuplicates&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Controllers.RobotControllerTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest.TestExecuteCommands&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest.TestExecuteCommandsWithDuplicates&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest.TestExecuteCommandsWithNonZeroStartingPosition&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
