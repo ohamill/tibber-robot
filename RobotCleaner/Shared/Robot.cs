@@ -10,7 +10,7 @@ public interface IRobot
     /// <param name="start">The robot's starting location. This is where the robot will be positioned when it begins
     /// executing the commands</param>
     /// <param name="commands">The collection of commands to execute</param>
-    /// <returns>An ExecutionReport object providing information about the robot's execution, including how many commands
+    /// <returns>An <c>ExecutionReport</c> object providing information about the robot's execution, including how many commands
     /// were processed, how long it took to process those commands, and how many locations were cleaned</returns>
     ExecutionReport ExecuteCommands(Coordinate start, IEnumerable<Command> commands);
 }
@@ -55,8 +55,8 @@ public class Robot : IRobot
     /// Moves the robot one square in the supplied direction and updates its current location accordingly
     /// </summary>
     /// <param name="direction">The direction in which the robot will move. This direction will determine how the robot's coordinate will
-    /// be updated (i.e. moving North or South will affect the robot's Y coordinate, and moving East or West will affect its X coordinate.</param>
-    /// <returns>A Coordinate value containing the robot's new current position</returns>
+    /// be updated (i.e. moving North or South will affect the robot's Y coordinate, and moving East or West will affect its X coordinate)</param>
+    /// <returns>A <c>Coordinate</c> value containing the robot's new current position</returns>
     private Coordinate UpdateCoordinate(Direction direction) => direction switch
     {
         Direction.North => _currentLocation with { Y = _currentLocation.Y + 1 },

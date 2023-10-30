@@ -9,7 +9,7 @@ namespace RobotCleaner.Db;
 public class PostgresHandler : IDbHandler
 {
     /// <summary>
-    /// The DB client used by the service to interact with the database
+    /// The DB client used by the handler to interact with the database
     /// </summary>
     private readonly IDbClient _client;
     private readonly ILogger<PostgresHandler> _logger;
