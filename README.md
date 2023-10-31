@@ -12,6 +12,7 @@ This project consists of two endpoints:
 
 ## How to Run
 From the solution's root directory, run `make up`. If needing to run Docker Compose with `sudo` privileges, you can instead run `make sudo-up`. Alternatively, you can navigate to the `RobotCleaner` directory and run `docker compose up`. To run in the background, you can do `docker compose up -d`.
+Once started, the application listens on port `5000` of the local host. So, for example, you can access the application's `POST` endpoint at `http://localhost:5000/tibber-developer-test/enter-path`.
 
 ## How to Stop
 From the solution's root directory, run `make down`. Alternatively, you can run `docker compose down` from the `RobotCleaner` directory.
