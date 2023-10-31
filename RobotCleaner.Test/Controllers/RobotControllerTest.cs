@@ -19,11 +19,6 @@ public class RobotControllerTest
     private readonly Mock<IRobot> _mockRobot = new();
     private readonly Mock<IDbHandler> _mockDbHandler = new();
 
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
     public async Task TestPostPath()
     {
@@ -40,11 +35,13 @@ public class RobotControllerTest
         var response = await controller.PostPath(pathRequest);
         // Assert
         _mockDbHandler.Verify(h => h.InsertExecutionReport(It.IsAny<ExecutionReport>()), Times.Once);
+        _mockRobot.Verify(r => r.ExecuteCommands(It.IsAny<Coordinate>(), It.IsAny<IEnumerable<Command>>()), Times.Once);
 
-        var pathResponse = response.Value!;
+        var pathResponse = response.Value;
         Assert.Multiple(() =>
         {
-            Assert.That(pathResponse.Id, Is.EqualTo(TestId));
+            Assert.That(pathResponse, Is.Not.Null);
+            Assert.That(pathResponse!.Id, Is.EqualTo(TestId));
             Assert.That(pathResponse.Timestamp, Is.EqualTo(_testTimestamp));
             Assert.That(pathResponse.Commands, Is.EqualTo(TestCommands));
             Assert.That(pathResponse.Result, Is.EqualTo(TestResult));
@@ -66,10 +63,11 @@ public class RobotControllerTest
         // Assert
         _mockDbHandler.Verify(h => h.GetExecutionReport(It.IsAny<int>()), Times.Once);
 
-        var pathResponse = response.Value!;
+        var pathResponse = response.Value;
         Assert.Multiple(() =>
         {
-            Assert.That(pathResponse.Id, Is.EqualTo(TestId));
+            Assert.That(pathResponse, Is.Not.Null);
+            Assert.That(pathResponse!.Id, Is.EqualTo(TestId));
             Assert.That(pathResponse.Timestamp, Is.EqualTo(_testTimestamp));
             Assert.That(pathResponse.Commands, Is.EqualTo(TestCommands));
             Assert.That(pathResponse.Result, Is.EqualTo(TestResult));

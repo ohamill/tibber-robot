@@ -19,7 +19,7 @@ public class PostgresHandlerTest
     [SetUp]
     public void Setup()
     {
-        _executionReport = new ExecutionReport(DateTime.Now, TestCommands, TestResult, TestDuration);
+        _executionReport = new ExecutionReport(_testTimestamp, TestCommands, TestResult, TestDuration);
     }
 
     [Test]
