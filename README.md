@@ -20,5 +20,6 @@ From the solution's root directory, run `make down`
 From the solution's root directory, run `make test`
 
 ## Tested On
-MacOS 14.0 Sonoma<br>
+MacOS 14.0 Sonoma
+<br>
 Debian 11.3 ARM64
