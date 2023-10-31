@@ -11,13 +11,13 @@ This project consists of two endpoints:
 * Gets an execution report matching the supplied ID
 
 ## How to Run
-After cloning the GitHub repository, start the Docker daemon and run `make up` from the solution's root directory
+From the solution's root directory, run `make up`. If needing to run Docker Compose with `sudo` privileges, you can instead run `make sudo-up`. Alternatively, you can navigate to the `RobotCleaner` directory and run `docker compose up`. To run in the background, you can do `docker compose up -d`.
 
 ## How to Stop
-From the solution's root directory, run `make down`
+From the solution's root directory, run `make down`. Alternatively, you can run `docker compose down` from the `RobotCleaner` directory.
 
 ## How to Test
-From the solution's root directory, run `make test`
+From the solution's root directory, run `make test`. Alternatively, you can run `dotnet test` from the `RobotCleaner.Test` directory.
 
 ## Tested On
 MacOS 14.0 Sonoma
