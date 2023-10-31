@@ -29,3 +29,9 @@ From the solution's root directory, run `make test`. Alternatively, you can run 
 MacOS 14.0 Sonoma
 <br>
 Debian 11.3 ARM64
+
+## Database Configuration
+The `docker-compose.yml` file provides default values for the Postgres database, but these can be overriden by setting environment variables on your local machine.
+* `POSTGRES_USER` controls the username
+* `POSTGRES_DB` controls the name of the database
+* `HOSTNAME` controls the hostname
