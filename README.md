@@ -16,7 +16,7 @@ The following should be installed before running the application:
 * .NET SDK (including the `dotnet` CLI tool)
 
 ## How to Run
-From the solution's root directory, run `make up`. If needing to run Docker Compose with `sudo` privileges, you can instead run `make sudo-up`. Alternatively, you can navigate to the `RobotCleaner` directory and run `docker compose up`. To run in the background, you can do `docker compose up -d`.
+From the solution's root directory, run `make up`. If needing to run Docker Compose with `sudo` privileges, you can instead run `make sudo-up`. Alternatively, you can navigate to the `RobotCleaner` directory and run `docker compose up` directly.
 Once started, the application listens on port `5000` of the local host. So, for example, you can access the application's `POST` endpoint at `http://localhost:5000/tibber-developer-test/enter-path`.
 
 ## How to Stop
