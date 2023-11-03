@@ -58,27 +58,6 @@ public class Path
                         }
                     }
                 }
-                
-                //var horLine = line.FlipDirectionIfNecessary();
-                
-                /*if (line.Direction == Direction.East)
-                {
-                    if (col <= line.Start.X || col > line.End.X) continue;
-                    foreach (var vertLine in vertLines)
-                    {
-                        if (line.Start.Y >= vertLine.End.Y || line.Start.Y < vertLine.Start.Y) continue;
-                        intersections.Add(col);
-                    }
-                }
-                else
-                {
-                    if (col >= line.Start.X || col < line.End.X) continue;
-                    foreach (var vertLine in vertLines)
-                    {
-                        if (line.Start.Y <= vertLine.End.Y || line.Start.Y > vertLine.Start.Y) continue;
-                        intersections.Add(col);
-                    }
-                }*/
             }
         }
         else
@@ -119,30 +98,6 @@ public class Path
                         }
                     }
                 }
-                /*if (row >= line.Start.Y || row < line.End.Y) continue;
-                foreach (var horLine in horLines)
-                {
-                    if (horLine.Start.X >= line.Start.X || horLine.End.X < line.Start.X) continue;
-                    intersections.Add(row);
-                }
-                if (line.Direction == Direction.North)
-                {
-                    if (row >= line.Start.Y || row < line.End.Y) continue;
-                    foreach (var horLine in horLines)
-                    {
-                        if (horLine.Start.X >= line.Start.X || horLine.End.X < line.Start.X) continue;
-                        intersections.Add(row);
-                    }
-                }
-                else
-                {
-                    if (row <= line.Start.Y || row > line.End.Y) continue;
-                    foreach (var horLine in horLines)
-                    {
-                        if (horLine.Start.X <= line.Start.X || horLine.End.X > line.Start.X) continue;
-                        intersections.Add(row);
-                    }
-                }*/
             }
         }
 

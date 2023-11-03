@@ -57,6 +57,7 @@ public class Robot : IRobot
     /// </summary>
     /// <param name="direction">The direction in which the robot will move. This direction will determine how the robot's coordinate will
     /// be updated (i.e. moving North or South will affect the robot's Y coordinate, and moving East or West will affect its X coordinate)</param>
+    /// <param name="steps">The number of locations to move</param>
     /// <returns>A <c>Coordinate</c> value containing the robot's new current position</returns>
     private Coordinate UpdateCoordinate(Direction direction, int steps) => direction switch
     {
