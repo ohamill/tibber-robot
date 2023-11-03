@@ -27,7 +27,6 @@ public class Robot : IRobot
         {
             // Place robot at starting location
             _currentLocation = start;
-            //_uniquePlacesCleaned.Add(_currentLocation);
 
             foreach (var command in commands)
             {
@@ -47,9 +46,8 @@ public class Robot : IRobot
     {
         var start = _currentLocation;
         var end = UpdateCoordinate(command.Direction, command.Steps);
-        var line = new Line(start, end, command.Direction);
+        _path.Add(new Line(start, end, command.Direction));
         _currentLocation = end;
-        _path.Add(line);
     }
 
     /// <summary>

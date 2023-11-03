@@ -2,7 +2,11 @@ namespace RobotCleaner.Models.Shared;
 
 public record struct Line(Coordinate Start, Coordinate End, Direction Direction)
 {
-    public bool IsHorizontal() => Direction is Direction.East || Direction is Direction.West;
+    public bool IsHorizontal() => Direction switch
+    {
+        Direction.East or Direction.West => true,
+        _ => false
+    };
     
     public int GetTotalLocations() => Direction switch
     {
