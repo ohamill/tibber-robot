@@ -1,4 +1,5 @@
 using RobotCleaner.Models.Shared;
+using Path = RobotCleaner.Models.Shared.Path;
 
 namespace RobotCleaner.Shared;
 
@@ -18,7 +19,7 @@ public interface IRobot
 public class Robot : IRobot
 {
     private Coordinate _currentLocation;
-    private readonly HashSet<Coordinate> _uniquePlacesCleaned = new();
+    private readonly Path _path = new();
     
     public ExecutionReport ExecuteCommands(Coordinate start, IEnumerable<Command> commands)
     {
@@ -26,7 +27,7 @@ public class Robot : IRobot
         {
             // Place robot at starting location
             _currentLocation = start;
-            _uniquePlacesCleaned.Add(_currentLocation);
+            //_uniquePlacesCleaned.Add(_currentLocation);
 
             foreach (var command in commands)
             {
@@ -34,7 +35,7 @@ public class Robot : IRobot
             }
         });
 
-        return new ExecutionReport(DateTime.Now, commands.Count(), _uniquePlacesCleaned.Count, duration);
+        return new ExecutionReport(DateTime.Now, commands.Count(), _path.GetUniqueLocations(), duration);
     }
 
     /// <summary>
@@ -44,11 +45,11 @@ public class Robot : IRobot
     /// <param name="command">The command to execute</param>
     private void ExecuteCommand(Command command)
     {
-        for (var i = 0; i < command.Steps; i++)
-        {
-            _currentLocation = UpdateCoordinate(command.Direction);
-            _uniquePlacesCleaned.Add(_currentLocation);
-        }
+        var start = _currentLocation;
+        var end = UpdateCoordinate(command.Direction, command.Steps);
+        var line = new Line(start, end, command.Direction);
+        _currentLocation = end;
+        _path.Add(line);
     }
 
     /// <summary>
@@ -57,12 +58,12 @@ public class Robot : IRobot
     /// <param name="direction">The direction in which the robot will move. This direction will determine how the robot's coordinate will
     /// be updated (i.e. moving North or South will affect the robot's Y coordinate, and moving East or West will affect its X coordinate)</param>
     /// <returns>A <c>Coordinate</c> value containing the robot's new current position</returns>
-    private Coordinate UpdateCoordinate(Direction direction) => direction switch
+    private Coordinate UpdateCoordinate(Direction direction, int steps) => direction switch
     {
-        Direction.North => _currentLocation with { Y = _currentLocation.Y + 1 },
-        Direction.East => _currentLocation with { X = _currentLocation.X + 1 },
-        Direction.South => _currentLocation with { Y = _currentLocation.Y - 1 },
-        Direction.West => _currentLocation with { X = _currentLocation.X - 1 },
+        Direction.North => _currentLocation with { Y = _currentLocation.Y - steps },
+        Direction.East => _currentLocation with { X = _currentLocation.X + steps },
+        Direction.South => _currentLocation with { Y = _currentLocation.Y + steps },
+        Direction.West => _currentLocation with { X = _currentLocation.X - steps },
         _ => _currentLocation
     };
 }
