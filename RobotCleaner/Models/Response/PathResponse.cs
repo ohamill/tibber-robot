@@ -2,7 +2,7 @@ using RobotCleaner.Models.Shared;
 
 namespace RobotCleaner.Models.Response;
 
-public record PathResponse(int Id, DateTime Timestamp, int Commands, int Result, double Duration)
+public record PathResponse(int Id, DateTime Timestamp, int Commands, long Result, double Duration)
 {
     public static PathResponse FromExecutionReport(ExecutionReport executionReport)
     {

@@ -4,16 +4,15 @@ public class Path
 {
     private readonly Dictionary<int, List<Line>> _horizontalLines = new();
     private readonly Dictionary<int, List<Line>> _verticalLines = new();
-    private int _uniqueLocationsCleaned = 1; // Account for starting location
+    private long _uniqueLocationsCleaned = 1; // Account for starting location
 
-    public int GetUniqueLocations() => _uniqueLocationsCleaned;
+    public long GetUniqueLocations() => _uniqueLocationsCleaned;
 
     public void Add(Line line)
     {
-        var horizontal = line.IsHorizontal();
         var intersectionsAndOverlaps = CalculateIntersections(line);
-        intersectionsAndOverlaps.UnionWith(CalculateOverlaps(line, horizontal));
-        AddLineToDict(line, horizontal);
+        intersectionsAndOverlaps.UnionWith(CalculateOverlaps(line));
+        AddLineToDict(line);
         _uniqueLocationsCleaned += line.GetTotalLocations() - intersectionsAndOverlaps.Count;
     }
 
@@ -104,10 +103,10 @@ public class Path
         return intersections;
     }
 
-    private HashSet<int> CalculateOverlaps(Line line, bool horizontal)
+    private HashSet<int> CalculateOverlaps(Line line)
     {
         var overlaps = new HashSet<int>();
-        if (horizontal)
+        if (line.IsHorizontal())
         {
             if (!_horizontalLines.TryGetValue(line.Start.Y, out var horLines)) return overlaps;
             foreach (var horLine in horLines)
@@ -304,9 +303,9 @@ public class Path
         return overlaps;
     }
 
-    private void AddLineToDict(Line line, bool horizontal)
+    private void AddLineToDict(Line line)
     {
-        if (horizontal)
+        if (line.IsHorizontal())
         {
             var horLines = _horizontalLines.GetValueOrDefault(line.Start.Y, new List<Line>());
             horLines.Add(line);
