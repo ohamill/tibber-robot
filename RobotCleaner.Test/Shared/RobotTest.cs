@@ -18,12 +18,7 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), commands);
         // Assert
-        Assert.Multiple(() =>
-        {
-            Assert.That(executionReport.Result, Is.EqualTo(7));
-            Assert.That(executionReport.Commands, Is.EqualTo(2));
-            Assert.That(executionReport.Duration, Is.GreaterThan(0));
-        });
+        MakeAssertions(executionReport, 7, 2);
     }
 
     [Test]
@@ -40,12 +35,7 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), commands);
         // Assert
-        Assert.Multiple(() =>
-        {
-            Assert.That(executionReport.Result, Is.EqualTo(5));
-            Assert.That(executionReport.Commands, Is.EqualTo(2));
-            Assert.That(executionReport.Duration, Is.GreaterThan(0));
-        });
+        MakeAssertions(executionReport, 5, 2);
     }
 
     [Test]
@@ -63,12 +53,7 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), commands);
         // Assert
-        Assert.Multiple(() =>
-        {
-            Assert.That(executionReport.Result, Is.EqualTo(11));
-            Assert.That(executionReport.Commands, Is.EqualTo(2));
-            Assert.That(executionReport.Duration, Is.GreaterThan(0));
-        });
+        MakeAssertions(executionReport, 11, 2);
     }
 
     [Test]
@@ -88,12 +73,7 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), commands);
         // Assert
-        Assert.Multiple(() =>
-        {
-            Assert.That(executionReport.Result, Is.EqualTo(17));
-            Assert.That(executionReport.Commands, Is.EqualTo(5));
-            Assert.That(executionReport.Duration, Is.GreaterThan(0));
-        });
+        MakeAssertions(executionReport, 17, 5);
     }
 
     [Test]
@@ -113,12 +93,7 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), commands);
         // Assert
-        Assert.Multiple(() =>
-        {
-            Assert.That(executionReport.Result, Is.EqualTo(13));
-            Assert.That(executionReport.Commands, Is.EqualTo(5));
-            Assert.That(executionReport.Duration, Is.GreaterThan(0));
-        });
+        MakeAssertions(executionReport, 13, 5);
     }
 
     [Test]
@@ -137,12 +112,7 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), commands);
         // Assert
-        Assert.Multiple(() =>
-        {
-            Assert.That(executionReport.Result, Is.EqualTo(20));
-            Assert.That(executionReport.Commands, Is.EqualTo(4));
-            Assert.That(executionReport.Duration, Is.GreaterThan(0));
-        });
+        MakeAssertions(executionReport, 20, 4);
     }
 
     [Test]
@@ -163,12 +133,29 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), commands);
         // Assert
-        Assert.Multiple(() =>
+        MakeAssertions(executionReport, 27, 6);
+    }
+
+    [Test]
+    public void TestExecuteCommandsWithDuplicates_SingleIntersectionAndOverlap()
+    {
+        // Arrange
+        var commands = new List<Command>
         {
-            Assert.That(executionReport.Result, Is.EqualTo(27));
-            Assert.That(executionReport.Commands, Is.EqualTo(6));
-            Assert.That(executionReport.Duration, Is.GreaterThan(0));
-        });
+            new(Direction.North, 5),
+            new(Direction.East, 5),
+            new(Direction.South, 10),
+            new(Direction.West, 10),
+            new(Direction.South, 5),
+            new(Direction.East, 5),
+            // This line should intersect with with the 5th line and overlap with the first line, and only 14 of its locations should be counted
+            new(Direction.North, 20)
+        };
+        var robot = new Robot();
+        // Act
+        var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), commands);
+        // Assert
+        MakeAssertions(executionReport, 55, 7);
     }
 
     [Test]
@@ -183,12 +170,7 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(5, 7), commands);
         // Assert
-        Assert.Multiple(() =>
-        {
-            Assert.That(executionReport.Result, Is.EqualTo(5));
-            Assert.That(executionReport.Commands, Is.EqualTo(1));
-            Assert.That(executionReport.Duration, Is.GreaterThan(0));
-        });
+        MakeAssertions(executionReport, 5, 1);
     }
 
     [Test]
@@ -199,12 +181,16 @@ public class RobotTest
         // Act
         var executionReport = robot.ExecuteCommands(new Coordinate(0, 0), new List<Command>());
         // Assert
+        MakeAssertions(executionReport, 1, 0);
+    }
+
+    private void MakeAssertions(ExecutionReport executionReport, int expectedResult, int expectedCommands)
+    {
         Assert.Multiple(() =>
         {
-            // Result should be 1 because the robot will still clean its starting position
-            Assert.That(executionReport.Result, Is.EqualTo(1));
-            Assert.That(executionReport.Commands, Is.EqualTo(0));
-            Assert.That(executionReport.Duration, Is.GreaterThanOrEqualTo(0));
+            Assert.That(executionReport.Result, Is.EqualTo(expectedResult));
+            Assert.That(executionReport.Commands, Is.EqualTo(expectedCommands));
+            Assert.That(executionReport.Duration, Is.GreaterThan(0));
         });
     }
 }
