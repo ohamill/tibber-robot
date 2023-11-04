@@ -25,14 +25,13 @@
     &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7537e074_002Dd12e_002D409f_002D9a5b_002D3d4af5bb79f1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestExecuteCommandsWithDuplicates_DoubleIntersection #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest.TestExecuteCommandsWithDuplicates_DoubleIntersection&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
+	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7c43683f_002Dda10_002D4062_002Db2e9_002D220072c6e68c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestExecuteCommandsWithDuplicates_DoubleIntersection #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.RobotTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Controllers.RobotControllerTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Db.PostgresHandlerTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::999CC237-00A1-40F9-ADC4-4E42354D8806::net7.0::RobotCleaner.Test.Shared.TimerTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9d9a2671_002Db147_002D4afb_002Da134_002D761da66d261a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestExecuteCommandsWithDuplicates_SingleIntersection #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
