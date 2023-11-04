@@ -8,6 +8,11 @@ public class Path
 
     public long GetUniqueLocations() => _uniqueLocationsCleaned;
 
+    /// <summary>
+    /// Adds a new line to the path, first comparing it against all other lines currently in the path for intersections
+    /// and overlaps.
+    /// </summary>
+    /// <param name="line">The <c>Line</c> to add to the path</param>
     public void Add(Line line)
     {
         var intersectionsAndOverlaps = CalculateIntersections(line);
@@ -16,6 +21,13 @@ public class Path
         _uniqueLocationsCleaned += line.GetTotalLocations() - intersectionsAndOverlaps.Count;
     }
 
+    /// <summary>
+    /// Calculates any intersections between the new line and existing lines in the path
+    /// </summary>
+    /// <param name="line">The new line to be checked for intersections</param>
+    /// <returns>A set of points where the new line intersects with existing lines. If the new line is horizontal, the hash set's
+    /// integer values will represent points on the Y-axis, and if the new line is vertical the integer values will represent points
+    /// on the X-axis.</returns>
     private HashSet<int> CalculateIntersections(Line line)
     {
         var intersections = new HashSet<int>();
@@ -23,12 +35,12 @@ public class Path
         {
             foreach (var (col, vertLines) in _verticalLines)
             {
-                if (line.Direction == Direction.East)
+                if (line.Direction is Direction.East)
                 {
                     if (col <= line.Start.X || col > line.End.X) continue;
                     foreach (var vertLine in vertLines)
                     {
-                        if (vertLine.Direction == Direction.North)
+                        if (vertLine.Direction is Direction.North)
                         {
                             if (line.Start.Y >= vertLine.End.Y || line.Start.Y < vertLine.Start.Y) continue; 
                             intersections.Add(col);
@@ -45,7 +57,7 @@ public class Path
                     if (col >= line.Start.X || col < line.End.X) continue;
                     foreach (var vertLine in vertLines)
                     {
-                        if (vertLine.Direction == Direction.North)
+                        if (vertLine.Direction is Direction.North)
                         {
                             if (line.Start.Y <= vertLine.End.Y || line.Start.Y > vertLine.Start.Y) continue;
                             intersections.Add(col);
@@ -63,12 +75,12 @@ public class Path
         {
             foreach (var (row, horLines) in _horizontalLines)
             {
-                if (line.Direction == Direction.North)
+                if (line.Direction is Direction.North)
                 {
                     if (row >= line.Start.Y || row < line.End.Y) continue;
                     foreach (var horLine in horLines)
                     {
-                        if (horLine.Direction == Direction.East)
+                        if (horLine.Direction is Direction.East)
                         {
                             if (horLine.Start.X >= line.Start.X || horLine.End.X < line.Start.X) continue;
                             intersections.Add(row);
@@ -85,7 +97,7 @@ public class Path
                     if (row <= line.Start.Y || row > line.End.Y) continue;
                     foreach (var horLine in horLines)
                     {
-                        if (horLine.Direction == Direction.East)
+                        if (horLine.Direction is Direction.East)
                         {
                             if (horLine.Start.X <= line.Start.X || horLine.End.X > line.Start.X) continue;
                             intersections.Add(row);
@@ -103,6 +115,13 @@ public class Path
         return intersections;
     }
 
+    /// <summary>
+    /// Calculates any overlap between the new line and existing lines in the path
+    /// </summary>
+    /// <param name="line">The new line to be checked for overlap</param>
+    /// <returns>A set of points where the new line overlaps with existing lines. If the new line is horizontal, the hash set's
+    /// integer values will represent points on the X-axis, and if the new line is vertical the integer values will represent
+    /// points on the Y-axis.</returns>
     private HashSet<int> CalculateOverlaps(Line line)
     {
         var overlaps = new HashSet<int>();
@@ -113,7 +132,7 @@ public class Path
             {
                 if (line.Direction == horLine.Direction)
                 {
-                    if (line.Direction == Direction.East)
+                    if (line.Direction is Direction.East)
                     {
                         if (line.Start.X >= horLine.Start.X && line.End.X <= horLine.End.X)
                         {
@@ -157,7 +176,7 @@ public class Path
                 }
                 else
                 {
-                    if (line.Direction == Direction.East)
+                    if (line.Direction is Direction.East)
                     {
                         if (line.Start.X >= horLine.End.X && line.End.X <= horLine.Start.X)
                         {
@@ -209,7 +228,7 @@ public class Path
             {
                 if (line.Direction == vertLine.Direction)
                 {
-                    if (line.Direction == Direction.North)
+                    if (line.Direction is Direction.North)
                     {
                         if (line.Start.Y <= vertLine.Start.Y && line.End.Y >= vertLine.End.Y)
                         {
@@ -254,7 +273,7 @@ public class Path
                 }
                 else
                 {
-                    if (line.Direction == Direction.North)
+                    if (line.Direction is Direction.North)
                     {
                         if (line.Start.Y >= vertLine.End.Y && line.End.Y <= vertLine.End.Y &&
                             line.End.Y >= vertLine.Start.Y)
@@ -303,6 +322,12 @@ public class Path
         return overlaps;
     }
 
+    /// <summary>
+    /// Adds the supplied line to the path's appropriate dictionary, depending on whether the line is horizontal or vertical.
+    /// Since new lines are compared to every other line in the path for intersections and overlaps, this method should be
+    /// called after that comparison has taken place so that the supplied line is not compared to itself.
+    /// </summary>
+    /// <param name="line">The line to add to the appropriate dictionary</param>
     private void AddLineToDict(Line line)
     {
         if (line.IsHorizontal())
